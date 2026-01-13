@@ -1,16 +1,6 @@
 import type { Metadata } from 'next';
-import { Inter, Orbitron } from 'next/font/google';
 import './globals.css';
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-});
-
-const orbitron = Orbitron({
-  subsets: ['latin'],
-  variable: '--font-orbitron',
-});
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: 'Phoop - Digestive Health Tracker with Poop Monsters NFTs',
@@ -29,9 +19,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${orbitron.variable}`}>
+    <html lang="en">
       <body className="font-body bg-background text-white antialiased overflow-x-hidden">
         {children}
+        <Analytics />
       </body>
     </html>
   );

@@ -5,22 +5,22 @@ export function Footer() {
     product: [
       { label: 'Features', href: '#features' },
       { label: 'Monsters', href: '#monsters' },
-      { label: 'Pricing', href: '#pricing' },
+      // { label: 'Pricing', href: '#pricing' },
     ],
     company: [
       { label: 'About', href: '#about' },
-      { label: 'Blog', href: '#blog' },
-      { label: 'Careers', href: '#careers' },
+      { label: 'Marketplace (soon) ', href: '#marketplace' },
+      // { label: 'Careers', href: '#careers' },
     ],
     legal: [
       { label: 'Privacy', href: '#privacy' },
       { label: 'Terms', href: '#terms' },
-      { label: 'Contact', href: '#contact' },
+      { label: 'Contact', href: 'mailto:radarsardar@gmail.com' },
     ],
     social: [
-      { label: 'Twitter', href: 'https://twitter.com', icon: '𝕏' },
-      { label: 'Discord', href: 'https://discord.com', icon: '💬' },
-      { label: 'Instagram', href: 'https://instagram.com', icon: '📷' },
+      { label: 'Twitter', href: 'https://x.com/poopmonsterinc', icon: '𝕏' },
+      { label: 'Github', href: 'https://github.com/microbiomedao', icon: '💬' },
+      // { label: 'Instagram', href: 'https://instagram.com', icon: '📷' },
     ],
   };
 
@@ -31,23 +31,26 @@ export function Footer() {
           {/* Brand */}
           <div className="col-span-2 lg:col-span-1">
             <a href="/" className="flex items-center gap-2 mb-4">
-              <span className="text-2xl">💩</span>
+              {/* <span className="text-2xl">💩</span> */}
               <span className="font-heading font-bold text-xl">Phoop</span>
             </a>
             <p className="text-white/50 text-sm mb-4">
-              A digestive health tracker with Poop Monsters NFTs. Level up your wellness journey.
+              A digestive health tracker with real world rewards. Level up your wellness journey.
             </p>
             <div className="flex gap-4">
-              {links.social.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="text-white/50 hover:text-gold transition-colors"
-                  aria-label={item.label}
-                >
-                  {item.icon}
-                </a>
-              ))}
+              {links.social.map((item, index) => {
+                const hoverColors = ['hover:text-honey-bronze-400', 'hover:text-muted-teal-400', 'hover:text-cotton-rose-400'];
+                return (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    className={`text-white/50 transition-colors ${hoverColors[index % hoverColors.length]}`}
+                    aria-label={item.label}
+                  >
+                    {item.icon}
+                  </a>
+                );
+              })}
             </div>
           </div>
 

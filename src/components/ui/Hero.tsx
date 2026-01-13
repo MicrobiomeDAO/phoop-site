@@ -48,7 +48,11 @@ export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-radial from-purple/20 via-background to-background" />
+      <div className="absolute inset-0 bg-gradient-radial from-muted-teal-600/15 via-linen-900/10 to-background" />
+      
+      {/* Additional color layers */}
+      <div className="absolute inset-0 bg-gradient-to-br from-honey-bronze-900/5 via-light-coral-900/3 to-cotton-rose-900/5" />
+      <div className="absolute inset-0 bg-gradient-to-tl from-linen-900/5 via-transparent to-muted-teal-900/5" />
       
       {/* Particle Background */}
       <ParticleBackground />
@@ -65,7 +69,7 @@ export function Hero() {
         {backgroundElements.map((element) => (
           <motion.div
             key={element.id}
-            className="absolute w-64 h-64 bg-gold/5 rounded-full blur-3xl"
+            className="absolute w-64 h-64 bg-honey-bronze-500/5 rounded-full blur-3xl"
             initial={enableAnimations ? {
               x: element.x,
               y: element.y,
@@ -91,12 +95,12 @@ export function Hero() {
           transition={enableAnimations ? { duration: 0.8 } : undefined}
           className="font-heading text-5xl sm:text-6xl lg:text-7xl font-bold mb-6"
         >
-          <span className="gradient-text">Phoop</span>
+          <span className="text-[#a26225] font-extrabold">Phoop</span>
           <br />
           Your Digestive Health Tracker
           <br />
           with{' '}
-          <span className="text-gold">Poop Monsters NFTs</span>
+          <span className="text-[#ffa239] font-bold">Real World Rewards</span>
         </motion.h1>
 
         {/* Subheading */}
@@ -107,7 +111,7 @@ export function Hero() {
           className="font-body text-xl text-white/70 mb-8 max-w-2xl mx-auto"
         >
           Phoop is a digestive health tracker that makes wellness fun. Log your health data, 
-          earn XP, and collect rare Poop Monsters NFTs from your tracking journey.
+          earn XP, collect Poop Monsters NFTs and win real rewards from your tracking journey.
         </motion.p>
 
         {/* CTA Buttons */}
@@ -145,13 +149,18 @@ export function Hero() {
           className="mt-12 flex flex-wrap items-center justify-center gap-8"
         >
           <div className="text-center">
-            <div className="font-heading text-3xl font-bold text-gold">10K+</div>
+            <div className="font-heading text-3xl font-bold text-light-coral-400">10K+</div>
             <div className="text-white/50 text-sm">On Waitlist</div>
           </div>
           <div className="w-px h-12 bg-white/10" />
           <div className="text-center">
-            <div className="font-heading text-3xl font-bold text-green">∞</div>
+            <div className="font-heading text-3xl font-bold text-muted-teal-400">∞</div>
             <div className="text-white/50 text-sm">XP Levels</div>
+          </div>
+          <div className="w-px h-12 bg-white/10" />
+          <div className="text-center">
+            <div className="font-heading text-3xl font-bold text-honey-bronze-400">7</div>
+            <div className="text-white/50 text-sm">Monster Types</div>
           </div>
         </motion.div>
       </div>

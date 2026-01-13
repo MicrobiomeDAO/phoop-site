@@ -79,6 +79,14 @@ const defaultSteps: ConceptStep[] = [
   },
 ];
 
+// Color mapping for each step type
+const stepColors = {
+  poop: { primary: 'honey-bronze', secondary: 'linen', accent: '#f19a0e' },
+  food: { primary: 'muted-teal', secondary: 'honey-bronze', accent: '#6c9389' },
+  lifestyle: { primary: 'cotton-rose', secondary: 'light-coral', accent: '#da3d25' },
+  monster: { primary: 'linen', secondary: 'muted-teal', accent: '#c88237' },
+};
+
 export function ConceptFlow({ steps = defaultSteps, onComplete }: ConceptFlowProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState<'next' | 'prev'>('next');
@@ -138,7 +146,7 @@ export function ConceptFlow({ steps = defaultSteps, onComplete }: ConceptFlowPro
               className={cn(
                 'w-12 h-12 rounded-full flex items-center justify-center text-xl transition-all',
                 index === activeIndex
-                  ? 'bg-gold text-background scale-110'
+                  ? 'bg-honey-bronze-500 text-background scale-110'
                   : 'bg-surface text-white/50 hover:text-white'
               )}
               aria-label={`Go to step ${index + 1}: ${s.title}`}
@@ -193,7 +201,7 @@ export function ConceptFlow({ steps = defaultSteps, onComplete }: ConceptFlowPro
                         transition={enableAnimations ? { delay: 0.3 + index * 0.1 } : undefined}
                         className="flex items-center gap-3"
                       >
-                        <span className="text-green">✓</span>
+                        <span className="text-muted-teal-400">✓</span>
                         <span className="text-white/80">{benefit}</span>
                       </motion.li>
                     ))}

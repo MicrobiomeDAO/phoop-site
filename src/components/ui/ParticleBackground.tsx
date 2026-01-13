@@ -41,8 +41,8 @@ export function ParticleBackground() {
         this.speedY = Math.random() * 1 - 0.5;
         this.opacity = Math.random() * 0.5 + 0.2;
         
-        // Random colors: gold, purple, or green
-        const colors = ['#FFD700', '#8B5CF6', '#10B981'];
+        // Random colors from our palette: honey-bronze, linen, cotton-rose, muted-teal, light-coral
+        const colors = ['#f19a0e', '#c88237', '#da3d25', '#6c9389', '#e71c18'];
         this.color = colors[Math.floor(Math.random() * colors.length)];
       }
 

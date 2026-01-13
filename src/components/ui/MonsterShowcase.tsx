@@ -12,7 +12,7 @@ export function MonsterShowcase() {
     <section id="monsters" className="relative py-20 overflow-hidden">
       {/* Background 3D Monster Field */}
       <div className="absolute inset-0 z-0 opacity-20">
-        <Suspense fallback={<div className="w-full h-full bg-gradient-to-b from-purple/10 to-transparent" />}>
+        <Suspense fallback={<div className="w-full h-full bg-gradient-to-b from-muted-teal-600/10 to-transparent" />}>
           <MonsterField count={15} />
         </Suspense>
       </div>
@@ -49,7 +49,10 @@ export function MonsterShowcase() {
               viewport={{ once: true }}
               transition={enableAnimations ? { delay: index * 0.1 } : undefined}
               whileHover={enableAnimations ? { scale: 1.05, y: -5 } : undefined}
-              className="card backdrop-blur-md group cursor-pointer"
+              className="card backdrop-blur-md group cursor-pointer border-t-2 hover:border-t-4 transition-all duration-300"
+              style={{
+                borderTopColor: `${monster.id === 'type1' ? '#c88237' : monster.id === 'type2' ? '#f19a0e' : monster.id === 'type3' ? '#6c9389' : monster.id === 'type4' ? '#da3d25' : monster.id === 'type5' ? '#e71c18' : monster.id === 'type6' ? '#f19a0e' : monster.id === 'type7' ? '#c88237' : '#da3d25'}`
+              }}
             >
               <div className="text-center p-2">
                 <div className="text-5xl md:text-6xl mb-3 group-hover:scale-110 transition-transform duration-300">
@@ -98,7 +101,7 @@ const MONSTER_TYPES = [
     emoji: '💩',
     description: 'The friendly starter monster',
     rarity: 'Common',
-    rarityColor: 'bg-gray-500/20 text-gray-300',
+    rarityColor: 'bg-linen-500/20 text-linen-300',
   },
   {
     id: 'type2',
@@ -106,7 +109,7 @@ const MONSTER_TYPES = [
     emoji: '😊',
     description: 'Always positive and uplifting',
     rarity: 'Common',
-    rarityColor: 'bg-gray-500/20 text-gray-300',
+    rarityColor: 'bg-honey-bronze-500/20 text-honey-bronze-300',
   },
   {
     id: 'type3',
@@ -114,7 +117,7 @@ const MONSTER_TYPES = [
     emoji: '😤',
     description: 'Strong and determined',
     rarity: 'Uncommon',
-    rarityColor: 'bg-green-500/20 text-green-300',
+    rarityColor: 'bg-muted-teal-500/20 text-muted-teal-300',
   },
   {
     id: 'type4',
@@ -122,7 +125,7 @@ const MONSTER_TYPES = [
     emoji: '😎',
     description: 'The chillest of the bunch',
     rarity: 'Uncommon',
-    rarityColor: 'bg-green-500/20 text-green-300',
+    rarityColor: 'bg-cotton-rose-500/20 text-cotton-rose-300',
   },
   {
     id: 'type5',
@@ -130,7 +133,7 @@ const MONSTER_TYPES = [
     emoji: '🤓',
     description: 'Wise beyond its years',
     rarity: 'Rare',
-    rarityColor: 'bg-blue-500/20 text-blue-300',
+    rarityColor: 'bg-light-coral-500/20 text-light-coral-300',
   },
   {
     id: 'type6',
@@ -138,7 +141,7 @@ const MONSTER_TYPES = [
     emoji: '🥳',
     description: 'Loves to celebrate wins',
     rarity: 'Rare',
-    rarityColor: 'bg-blue-500/20 text-blue-300',
+    rarityColor: 'bg-honey-bronze-600/20 text-honey-bronze-400',
   },
   {
     id: 'type7',
@@ -146,7 +149,7 @@ const MONSTER_TYPES = [
     emoji: '👑',
     description: 'The king of the collection',
     rarity: 'Epic',
-    rarityColor: 'bg-purple-500/20 text-purple-300',
+    rarityColor: 'bg-linen-600/20 text-linen-300',
   },
   {
     id: 'zombie',
@@ -154,6 +157,6 @@ const MONSTER_TYPES = [
     emoji: '🧟',
     description: 'Ultra rare undead variant',
     rarity: 'Legendary',
-    rarityColor: 'bg-gold/20 text-gold',
+    rarityColor: 'bg-gradient-to-r from-cotton-rose-500/20 to-light-coral-500/20 text-light-coral-400',
   },
 ];

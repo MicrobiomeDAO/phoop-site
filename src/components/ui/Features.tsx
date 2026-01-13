@@ -68,7 +68,19 @@ export function Features() {
 
         {/* Features grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map((feature, index) => (
+          {features.map((feature, index) => {
+            // Assign colors based on index
+            const colors = [
+              { bg: 'bg-honey-bronze-500/10', text: 'text-honey-bronze-400', hover: 'group-hover:text-honey-bronze-500' },
+              { bg: 'bg-muted-teal-500/10', text: 'text-muted-teal-400', hover: 'group-hover:text-muted-teal-500' },
+              { bg: 'bg-cotton-rose-500/10', text: 'text-cotton-rose-400', hover: 'group-hover:text-cotton-rose-500' },
+              { bg: 'bg-linen-500/10', text: 'text-linen-400', hover: 'group-hover:text-linen-500' },
+              { bg: 'bg-light-coral-500/10', text: 'text-light-coral-400', hover: 'group-hover:text-light-coral-500' },
+              { bg: 'bg-honey-bronze-600/10', text: 'text-honey-bronze-300', hover: 'group-hover:text-honey-bronze-400' },
+            ];
+            const colorSet = colors[index % colors.length];
+            
+            return (
             <motion.div
               key={feature.title}
               initial={enableAnimations ? { opacity: 0, y: 30 } : undefined}
@@ -76,22 +88,25 @@ export function Features() {
               viewport={{ once: true }}
               transition={enableAnimations ? { delay: index * 0.1 } : undefined}
               className={cn(
-                'card group cursor-pointer',
+                'card group cursor-pointer relative overflow-hidden',
                 enableAnimations && 'hover:scale-105'
               )}
             >
+              {/* Colored accent bar */}
+              <div className={`absolute top-0 left-0 right-0 h-1 ${colorSet.bg.replace('/10', '')}`} />
+              
               <div className="text-4xl mb-4">{feature.icon}</div>
-              <h3 className="font-heading text-xl font-bold mb-2 group-hover:text-gold transition-colors">
+              <h3 className={`font-heading text-xl font-bold mb-2 ${colorSet.hover} transition-colors`}>
                 {feature.title}
               </h3>
               <p className="font-body text-white/60 mb-4">
                 {feature.description}
               </p>
-              <div className="inline-block px-3 py-1 bg-gold/10 text-gold text-sm font-medium rounded-full">
+              <div className={`inline-block px-3 py-1 ${colorSet.bg} ${colorSet.text} text-sm font-medium rounded-full`}>
                 {feature.stat}
               </div>
             </motion.div>
-          ))}
+          )})}
         </div>
       </div>
     </section>

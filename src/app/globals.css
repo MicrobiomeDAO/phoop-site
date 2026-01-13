@@ -2,30 +2,67 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Dark mode (default) */
-:root {
-  --foreground-rgb: 255, 255, 255;
-  --background-start-rgb: 15, 15, 35;
-  --background-end-rgb: 5, 5, 16;
-  --text-primary: 255, 255, 255;
-  --text-secondary: 255, 255, 255;
-  --gold: #FFD700;
-  --purple: #8B5CF6;
-  --green: #10B981;
-  --surface: rgba(30, 30, 63, 0.5);
+/* Import Montserrat from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+
+/* Universal Montserrat Font Configuration */
+@layer base {
+  * {
+    font-family: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 300; /* Default Light 300 */
+  }
+
+  /* Headings use SemiBold 600 */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 600;
+  }
+
+  /* Body text uses Light 300 */
+  p, span, div, a, label {
+    font-family: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 300;
+  }
+
+  /* Buttons use SemiBold 600 */
+  button {
+    font-family: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 600;
+  }
+
+  /* Input and textarea use Regular 400 */
+  input, textarea {
+    font-family: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 400;
+  }
 }
 
-/* Light mode variables - cream/warm tone */
+/* Sage green background theme with cream text and orange accents */
+:root {
+  --foreground-rgb: 252, 249, 234;
+  --background-start-rgb: 151, 168, 122;
+  --background-end-rgb: 121, 135, 98;
+  --text-primary: 252, 249, 234;
+  --text-secondary: 168, 187, 163;
+  --sage-green: #97a87a;
+  --light-sage: #a8bba3;
+  --cream: #fcf9ea;
+  --orange: #ffa239;
+  --surface: rgba(168, 187, 163, 0.3);
+}
+
+/* Light mode variables - inverted for light backgrounds */
 html.light {
-  --foreground-rgb: 26, 26, 35;
-  --background-start-rgb: 254, 250, 235;
-  --background-end-rgb: 248, 244, 230;
-  --text-primary: 26, 26, 35;
-  --text-secondary: 0, 0, 0;
-  --gold: #B8860B;
-  --purple: #7C3AED;
-  --green: #059669;
-  --surface: rgba(255, 255, 255, 0.95);
+  --foreground-rgb: 61, 68, 49;
+  --background-start-rgb: 252, 249, 234;
+  --background-end-rgb: 245, 240, 228;
+  --text-primary: 61, 68, 49;
+  --text-secondary: 121, 135, 98;
+  --sage-green: #97a87a;
+  --light-sage: #a8bba3;
+  --cream: #fcf9ea;
+  --orange: #ffa239;
+  --surface: rgba(252, 249, 234, 0.95);
 }
 
 * {
@@ -40,41 +77,51 @@ html {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-    to bottom,
-    rgb(var(--background-end-rgb)),
-    rgb(var(--background-start-rgb))
-  );
+  background: 
+    linear-gradient(135deg, rgba(168, 187, 163, 0.15) 0%, transparent 20%),
+    linear-gradient(225deg, rgba(255, 162, 57, 0.08) 0%, transparent 20%),
+    linear-gradient(to bottom, rgb(var(--background-end-rgb)), rgb(var(--background-start-rgb)));
   min-height: 100vh;
   transition: background 0.3s ease, color 0.3s ease;
+  /* Add subtle texture for organic feel */
+  background-image: 
+    linear-gradient(135deg, rgba(168, 187, 163, 0.15) 0%, transparent 20%),
+    linear-gradient(225deg, rgba(255, 162, 57, 0.08) 0%, transparent 20%),
+    linear-gradient(to bottom, rgb(var(--background-end-rgb)), rgb(var(--background-start-rgb))),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(168, 187, 163, 0.03) 2px,
+      rgba(168, 187, 163, 0.03) 4px
+    );
 }
 
-/* Light mode specific overrides - creamy warm background */
+/* Light mode specific overrides */
 html.light body {
-  color: rgb(26, 26, 35);
-  background: linear-gradient(
-    to bottom,
-    #E8DCC4,
-    #F5EFE0
-  );
+  color: rgb(61, 68, 49);
+  background: 
+    linear-gradient(135deg, rgba(151, 168, 122, 0.1) 0%, transparent 20%),
+    linear-gradient(225deg, rgba(255, 162, 57, 0.1) 0%, transparent 20%),
+    linear-gradient(to bottom, #fcf9ea, #f5f0e4);
 }
 
 html.light .card {
-  background: rgba(255, 253, 245, 0.95);
-  border-color: rgba(0, 0, 0, 0.08);
-  color: #1a1a23;
+  background: rgba(252, 249, 234, 0.95);
+  border-color: rgba(151, 168, 122, 0.2);
+  color: #3d4431;
 }
 
 html.light .surface {
-  background: rgba(248, 244, 230, 0.95);
+  background: rgba(248, 244, 225, 0.95);
 }
 
 html.light .bg-surface {
-  background: rgba(248, 244, 230, 0.95);
+  background: rgba(248, 244, 225, 0.95);
 }
 
 html.light .surface-light {
-  background: rgba(255, 250, 200, 0.8);
+  background: rgba(255, 250, 195, 0.8);
 }
 
 html.light .glass {
@@ -103,32 +150,36 @@ html.light {
 /* Force all text to be dark in light mode */
 html.light,
 html.light * {
-  color: #1a1a23 !important;
+  color: #1a1a0f !important;
 }
 
 /* But keep special colors */
-html.light .text-gold,
-html.light [class*="text-gold"] {
-  color: #B8860B !important;
+html.light .text-honey-bronze,
+html.light [class*="text-honey-bronze"] {
+  color: #c17b0b !important;
 }
 
-html.light .text-purple,
-html.light [class*="text-purple"] {
-  color: #7C3AED !important;
+html.light .text-linen,
+html.light .text-brown,
+html.light [class*="text-linen"],
+html.light [class*="text-brown"] {
+  color: #a0682c !important;
 }
 
-html.light .text-green,
-html.light [class*="text-green"] {
-  color: #059669 !important;
+html.light .text-muted-teal,
+html.light [class*="text-muted-teal"] {
+  color: #57756e !important;
 }
 
-html.light .text-red,
-html.light [class*="text-red"] {
-  color: #DC2626 !important;
+html.light .text-cotton-rose,
+html.light .text-light-coral,
+html.light [class*="text-cotton-rose"],
+html.light [class*="text-light-coral"] {
+  color: #ae311e !important;
 }
 
 html.light .gradient-text {
-  background: linear-gradient(135deg, #B8860B 0%, #7C3AED 50%, #059669 100%);
+  background: linear-gradient(135deg, #ffa239 0%, #a26225 50%, #f9b3bd 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -174,17 +225,17 @@ html.light .btn-ghost {
 }
 
 html.light .btn-ghost:hover {
-  border-color: #B8860B;
-  background: rgba(184, 134, 11, 0.1);
+  border-color: #c17b0b;
+  background: rgba(193, 123, 11, 0.1);
 }
 
 html.light .btn-primary {
-  background: #B8860B;
+  background: linear-gradient(to right, #f19a0e, #c17b0b);
   color: #ffffff;
 }
 
 html.light .btn-primary:hover {
-  background: #967010;
+  background: linear-gradient(to right, #c17b0b, #a0682c);
 }
 
 /* Navigation overrides */
@@ -195,7 +246,7 @@ html.light .nav-link {
 
 html.light nav a:not(.btn-primary):hover,
 html.light .nav-link:hover {
-  color: #B8860B;
+  color: #6c9389;
 }
 
 /* Footer overrides */
@@ -259,7 +310,7 @@ html.light [class*="bg-white"].dark\\:bg-surface {
 
 /* Hover card effects */
 html.light .card:hover {
-  border-color: rgba(184, 134, 11, 0.3);
+  border-color: rgba(241, 154, 14, 0.3);
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
 }
 
@@ -287,7 +338,7 @@ html.light .mobile-menu a:not(.btn-primary) {
 }
 
 html.light .mobile-menu a:not(.btn-primary):hover {
-  color: #B8860B;
+  color: #6c9389;
 }
 
 /* Image visibility in light mode */
@@ -310,12 +361,12 @@ html.light .text-on-cream\/40 {
   color: #1a1a23 !important;
 }
 
-html.light .text-gold {
-  color: #B8860B;
+html.light .text-honey-bronze {
+  color: #c17b0b;
 }
 
-html.light .text-purple {
-  color: #7C3AED;
+html.light .text-linen {
+  color: #a0682c;
 }
 
 /* SVG icons in light mode */
@@ -329,50 +380,50 @@ html.light svg:not([class*="text"]) {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0F0F23;
+  background: #798762;
 }
 
 html.light ::-webkit-scrollbar-track {
-  background: #f0f0f5;
+  background: #f5f0e4;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #FFD700;
+  background: #ffa239;
   border-radius: 4px;
 }
 
 html.light ::-webkit-scrollbar-thumb {
-  background: #B8860B;
+  background: #ff8c0a;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #FFE44D;
+  background: #ffbc6e;
 }
 
 html.light ::-webkit-scrollbar-thumb:hover {
-  background: #967010;
+  background: #e67100;
 }
 
 /* Selection */
 ::selection {
-  background: #FFD700;
-  color: #0F0F23;
+  background: #ffa239;
+  color: #3d4431;
 }
 
 html.light ::selection {
-  background: #B8860B;
-  color: #ffffff;
+  background: #ffa239;
+  color: #fcf9ea;
 }
 
 /* Focus styles */
 *:focus-visible {
-  outline: 2px solid #FFD700;
+  outline: 2px solid #ffa239;
   outline-offset: 2px;
 }
 
 html.light *:focus-visible {
-  outline: 2px solid #B8860B;
+  outline: 2px solid #ff8c0a;
   outline-offset: 2px;
 }
 
@@ -388,10 +439,10 @@ html.light *:focus-visible {
 
 @keyframes pulse-glow {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    box-shadow: 0 0 20px rgba(213, 189, 175, 0.3);
   }
   50% {
-    box-shadow: 0 0 40px rgba(255, 215, 0, 0.6);
+    box-shadow: 0 0 40px rgba(213, 189, 175, 0.6);
   }
 }
 
@@ -478,7 +529,7 @@ html.light *:focus-visible {
 .glass {
   background: rgba(30, 30, 63, 0.5);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(237, 237, 233, 0.1);
 }
 
 .glass-light {
@@ -489,7 +540,7 @@ html.light *:focus-visible {
 
 /* Gradient text */
 .gradient-text {
-  background: linear-gradient(135deg, #FFD700 0%, #8B5CF6 50%, #10B981 100%);
+  background: linear-gradient(135deg, #ffa239 0%, #a26225 50%, #f9b3bd 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -497,43 +548,75 @@ html.light *:focus-visible {
 
 /* Button styles */
 .btn-primary {
-  @apply bg-gold text-background font-heading font-bold py-3 px-6 rounded-lg
-         hover:bg-gold-light transition-all duration-300
-         hover:scale-105 hover:shadow-lg hover:shadow-gold/25
+  @apply bg-gradient-to-r from-orange-400 to-orange-500 text-cream-500 font-heading font-bold py-3 px-6 rounded-lg
+         hover:from-orange-500 hover:to-orange-600 transition-all duration-300
+         hover:scale-105 hover:shadow-lg hover:shadow-orange-400/30
          active:scale-95;
 }
 
 .btn-secondary {
-  @apply bg-purple text-white font-heading font-bold py-3 px-6 rounded-lg
-         hover:bg-purple-light transition-all duration-300
-         hover:scale-105 hover:shadow-lg hover:shadow-purple/25
+  @apply bg-light-sage-500 text-cream-500 font-heading font-bold py-3 px-6 rounded-lg
+         hover:bg-light-sage-600 transition-all duration-300
+         hover:scale-105 hover:shadow-lg hover:shadow-light-sage-500/25
          active:scale-95;
 }
 
 .btn-ghost {
-  @apply bg-transparent text-white font-heading font-bold py-3 px-6 rounded-lg
-         border border-white/20 hover:border-gold/50
-         hover:bg-white/5 transition-all duration-300;
+  @apply bg-transparent text-cream-500 font-heading font-bold py-3 px-6 rounded-lg
+         border border-cream-500/20 hover:border-orange-400/50
+         hover:bg-cream-500/5 transition-all duration-300;
+}
+
+/* Additional button variants */
+.btn-coral {
+  @apply bg-gradient-to-r from-orange-400 to-orange-500 text-cream-500 font-heading font-bold py-3 px-6 rounded-lg
+         hover:from-orange-500 hover:to-orange-600 transition-all duration-300
+         hover:scale-105 hover:shadow-lg hover:shadow-orange-500/25
+         active:scale-95;
+}
+
+.btn-teal {
+  @apply bg-light-sage-600 text-cream-500 font-heading font-bold py-3 px-6 rounded-lg
+         hover:bg-light-sage-700 transition-all duration-300
+         hover:scale-105 hover:shadow-lg hover:shadow-light-sage-500/25
+         active:scale-95;
+}
+
+.btn-linen {
+  @apply bg-cream-500 text-sage-green-800 font-heading font-bold py-3 px-6 rounded-lg
+         hover:bg-cream-600 transition-all duration-300
+         hover:scale-105 hover:shadow-lg hover:shadow-cream-500/25
+         active:scale-95;
 }
 
 /* Card styles */
 .card {
-  @apply bg-surface rounded-xl p-6 border border-white/5
-         hover:border-gold/30 transition-all duration-300
-         hover:shadow-lg hover:shadow-gold/10
+  @apply bg-surface rounded-xl p-6 border border-cream-500/10
+         hover:border-orange-400/30 transition-all duration-300
+         hover:shadow-lg hover:shadow-orange-400/10
          relative;
   backdrop-filter: blur(10px);
+  /* Add organic shadow for depth */
+  box-shadow: 
+    0 4px 6px -1px rgba(168, 187, 163, 0.1),
+    0 2px 4px -1px rgba(168, 187, 163, 0.06);
 }
 
 html.light .card {
-  background: rgba(255, 253, 245, 0.95);
-  border-color: rgba(0, 0, 0, 0.08);
+  background: rgba(252, 249, 234, 0.95);
+  border-color: rgba(151, 168, 122, 0.15);
   backdrop-filter: blur(12px);
+  box-shadow: 
+    0 4px 12px -2px rgba(151, 168, 122, 0.08),
+    0 2px 6px -1px rgba(168, 187, 163, 0.04);
 }
 
 html.light .card:hover {
-  border-color: rgba(184, 134, 11, 0.3);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  border-color: rgba(255, 162, 57, 0.4);
+  box-shadow: 
+    0 12px 24px -4px rgba(255, 162, 57, 0.12),
+    0 4px 12px -2px rgba(151, 168, 122, 0.08);
+  transform: translateY(-2px);
 }
 
 /* Card glow effect on hover */
@@ -543,7 +626,7 @@ html.light .card:hover {
   inset: 0;
   border-radius: inherit;
   padding: 2px;
-  background: linear-gradient(135deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+  background: linear-gradient(135deg, transparent, rgba(237, 237, 233, 0.1), transparent);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
@@ -558,9 +641,9 @@ html.light .card:hover {
 
 /* Input styles */
 .input {
-  @apply w-full px-4 py-3 bg-surface border border-white/10 rounded-lg
-         text-white placeholder-white/40
-         focus:border-gold focus:ring-2 focus:ring-gold/20
+  @apply w-full px-4 py-3 bg-surface border border-cream-500/10 rounded-lg
+         text-cream-500 placeholder-cream-500/40
+         focus:border-orange-400 focus:ring-2 focus:ring-orange-400/20
          transition-all duration-300;
   position: relative;
   z-index: 10;
@@ -580,27 +663,27 @@ html.light .input::placeholder {
 /* Degen creativity styles */
 .degen-border {
   border: 2px solid transparent;
-  background: linear-gradient(#0F0F23, #0F0F23) padding-box,
-              linear-gradient(135deg, #FFD700, #8B5CF6, #10B981) border-box;
+  background: linear-gradient(#97a87a, #97a87a) padding-box,
+              linear-gradient(135deg, #ffa239, #a8bba3, #fcf9ea) border-box;
 }
 
 html.light .degen-border {
-  background: linear-gradient(#ffffff, #f5f5fa) padding-box,
-              linear-gradient(135deg, #B8860B, #7C3AED, #059669) border-box;
+  background: linear-gradient(#fcf9ea, #f5f0e4) padding-box,
+              linear-gradient(135deg, #ffa239, #97a87a, #a8bba3) border-box;
 }
 
 .neon-glow {
   text-shadow: 
-    0 0 5px #FFD700,
-    0 0 10px #FFD700,
-    0 0 20px #FFD700,
-    0 0 40px #FFD700;
+    0 0 5px #ffa239,
+    0 0 10px #ffa239,
+    0 0 20px #ffa239,
+    0 0 40px #ffa239;
 }
 
 .crypto-bg {
   background-image: 
-    radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 50%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+    radial-gradient(circle at 20% 50%, rgba(237, 237, 233, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(214, 204, 194, 0.1) 0%, transparent 50%);
 }
 
 /* Particle effects */
@@ -608,7 +691,7 @@ html.light .degen-border {
   position: absolute;
   width: 4px;
   height: 4px;
-  background: #FFD700;
+  background: #ffa239;
   border-radius: 50%;
   pointer-events: none;
 }
@@ -713,26 +796,90 @@ html.light .section-overlay {
 }
 
 /* Glow effects */
-.glow-gold {
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3),
-              0 0 40px rgba(255, 215, 0, 0.2),
-              0 0 60px rgba(255, 215, 0, 0.1);
+.glow-orange {
+  box-shadow: 0 0 20px rgba(255, 162, 57, 0.3),
+              0 0 40px rgba(255, 162, 57, 0.2),
+              0 0 60px rgba(255, 162, 57, 0.1);
 }
 
-.glow-purple {
-  box-shadow: 0 0 20px rgba(139, 92, 246, 0.3),
-              0 0 40px rgba(139, 92, 246, 0.2),
-              0 0 60px rgba(139, 92, 246, 0.1);
+.glow-gold {
+  box-shadow: 0 0 20px rgba(255, 162, 57, 0.3),
+              0 0 40px rgba(255, 162, 57, 0.2),
+              0 0 60px rgba(255, 162, 57, 0.1);
+}
+
+.glow-sage {
+  box-shadow: 0 0 20px rgba(151, 168, 122, 0.3),
+              0 0 40px rgba(151, 168, 122, 0.2),
+              0 0 60px rgba(151, 168, 122, 0.1);
+}
+
+.glow-light-sage {
+  box-shadow: 0 0 20px rgba(168, 187, 163, 0.3),
+              0 0 40px rgba(168, 187, 163, 0.2),
+              0 0 60px rgba(168, 187, 163, 0.1);
+}
+
+.glow-cream {
+  box-shadow: 0 0 20px rgba(252, 249, 234, 0.3),
+              0 0 40px rgba(252, 249, 234, 0.2),
+              0 0 60px rgba(252, 249, 234, 0.1);
+}
+
+.glow-linen {
+  box-shadow: 0 0 20px rgba(200, 130, 55, 0.3),
+              0 0 40px rgba(200, 130, 55, 0.2),
+              0 0 60px rgba(200, 130, 55, 0.1);
+}
+
+.glow-brown {
+  box-shadow: 0 0 20px rgba(200, 130, 55, 0.3),
+              0 0 40px rgba(200, 130, 55, 0.2),
+              0 0 60px rgba(200, 130, 55, 0.1);
+}
+
+.glow-green {
+  box-shadow: 0 0 20px rgba(108, 147, 137, 0.3),
+              0 0 40px rgba(108, 147, 137, 0.2),
+              0 0 60px rgba(108, 147, 137, 0.1);
+}
+
+html.light .glow-honey-bronze {
+  box-shadow: 0 0 20px rgba(193, 123, 11, 0.3),
+              0 0 40px rgba(193, 123, 11, 0.2);
 }
 
 html.light .glow-gold {
-  box-shadow: 0 0 20px rgba(184, 134, 11, 0.3),
-              0 0 40px rgba(184, 134, 11, 0.2);
+  box-shadow: 0 0 20px rgba(193, 123, 11, 0.3),
+              0 0 40px rgba(193, 123, 11, 0.2);
 }
 
-html.light .glow-purple {
-  box-shadow: 0 0 20px rgba(124, 58, 237, 0.3),
-              0 0 40px rgba(124, 58, 237, 0.2);
+html.light .glow-brown {
+  box-shadow: 0 0 20px rgba(160, 104, 44, 0.3),
+              0 0 40px rgba(160, 104, 44, 0.2);
+}
+
+html.light .glow-linen {
+  box-shadow: 0 0 20px rgba(160, 104, 44, 0.3),
+              0 0 40px rgba(160, 104, 44, 0.2);
+}
+
+.glow-light-coral {
+  box-shadow: 0 0 20px rgba(231, 28, 24, 0.3),
+              0 0 40px rgba(231, 28, 24, 0.2),
+              0 0 60px rgba(231, 28, 24, 0.1);
+}
+
+.glow-coral {
+  box-shadow: 0 0 20px rgba(218, 61, 37, 0.3),
+              0 0 40px rgba(218, 61, 37, 0.2),
+              0 0 60px rgba(218, 61, 37, 0.1);
+}
+
+.glow-teal {
+  box-shadow: 0 0 20px rgba(108, 147, 137, 0.3),
+              0 0 40px rgba(108, 147, 137, 0.2),
+              0 0 60px rgba(108, 147, 137, 0.1);
 }
 
 /* Splash Screen Animations */
@@ -906,4 +1053,52 @@ html.light .glow-purple {
 
 .animation-delay-400 {
   animation-delay: 0.4s;
+}
+
+/* Custom utility classes for Montserrat weight hierarchy */
+@layer utilities {
+  /* Light 300 - Normal text */
+  .font-montserrat {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+  }
+
+  .font-montserrat-light {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+  }
+
+  /* Regular 400 - Subheadings */
+  .font-montserrat-regular {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+  }
+
+  /* SemiBold 600 - Headings */
+  .font-montserrat-semibold {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+  }
+
+  /* Bold 700 - Extra emphasis */
+  .font-montserrat-bold {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+  }
+
+  /* Semantic utility classes */
+  .font-heading {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+  }
+
+  .font-subheading {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+  }
+
+  .font-body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+  }
 }

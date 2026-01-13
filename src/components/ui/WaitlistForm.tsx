@@ -75,7 +75,7 @@ export function WaitlistForm() {
             <p className="text-white/70 mb-8 text-lg">
               You're officially part of something special!
             </p>
-            <div className="bg-gradient-to-br from-gold/10 to-purple/10 rounded-xl p-8 mb-8 border border-gold/20">
+            <div className="bg-gradient-to-br from-honey-bronze-500/10 via-muted-teal-600/10 to-cotton-rose-500/10 rounded-xl p-8 mb-8 border border-honey-bronze-500/20">
               <div className="text-6xl mb-4">💩✨</div>
               <p className="text-white/80 text-base leading-relaxed mb-4">
                 Get ready to transform your health journey into an exciting adventure. 
@@ -141,7 +141,7 @@ export function WaitlistForm() {
 
             <div>
               <label htmlFor="email" className="block text-sm font-medium mb-2">
-                Email <span className="text-gold">*</span>
+                Email <span className="text-cotton-rose-400">*</span>
               </label>
               <input
                 type="email"

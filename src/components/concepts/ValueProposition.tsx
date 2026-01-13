@@ -59,30 +59,40 @@ export function ValueProposition() {
         </motion.p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {VALUE_PROPS.map((prop, index) => (
-            <motion.div
-              key={prop.title}
-              initial={enableAnimations ? { opacity: 0, y: 30 } : undefined}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={enableAnimations ? { delay: index * 0.1 } : undefined}
-              className={cn(
-                'card text-center cursor-pointer',
-                enableAnimations && 'hover:scale-105'
-              )}
-            >
-              <div className="text-4xl mb-4">{prop.icon}</div>
-              <h3 className="font-heading text-xl font-bold mb-3">
-                {prop.title}
-              </h3>
-              <p className="text-white/60 text-sm mb-4">
-                {prop.description}
-              </p>
-              <div className="inline-block px-3 py-1 bg-purple/10 text-purple text-sm font-medium rounded-full">
-                {prop.stat}
-              </div>
-            </motion.div>
-          ))}
+          {VALUE_PROPS.map((prop, index) => {
+            const colors = [
+              { bg: 'bg-honey-bronze-500/10', text: 'text-honey-bronze-400', border: 'border-honey-bronze-500/30' },
+              { bg: 'bg-muted-teal-500/10', text: 'text-muted-teal-400', border: 'border-muted-teal-500/30' },
+              { bg: 'bg-cotton-rose-500/10', text: 'text-cotton-rose-400', border: 'border-cotton-rose-500/30' },
+              { bg: 'bg-linen-500/10', text: 'text-linen-400', border: 'border-linen-500/30' },
+            ];
+            const colorScheme = colors[index % colors.length];
+            return (
+              <motion.div
+                key={prop.title}
+                initial={enableAnimations ? { opacity: 0, y: 30 } : undefined}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={enableAnimations ? { delay: index * 0.1 } : undefined}
+                className={cn(
+                  'card text-center cursor-pointer border-t-2',
+                  colorScheme.border,
+                  enableAnimations && 'hover:scale-105'
+                )}
+              >
+                <div className="text-4xl mb-4">{prop.icon}</div>
+                <h3 className={cn('font-heading text-xl font-bold mb-3', colorScheme.text)}>
+                  {prop.title}
+                </h3>
+                <p className="text-white/60 text-sm mb-4">
+                  {prop.description}
+                </p>
+                <div className={cn('inline-block px-3 py-1 text-sm font-medium rounded-full', colorScheme.bg, colorScheme.text)}>
+                  {prop.stat}
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
 
         <motion.div
@@ -91,9 +101,9 @@ export function ValueProposition() {
           viewport={{ once: true }}
           className="mt-16 text-center"
         >
-          <div className="card inline-block">
+          <div className="card inline-block border-2 border-light-coral-500/20">
             <p className="text-white/80 mb-4">
-              Join <strong className="text-gold">10,000+</strong> health-conscious people 
+              Join <strong className="text-light-coral-400">10,000+</strong> health-conscious people 
               waiting for early access
             </p>
             <a

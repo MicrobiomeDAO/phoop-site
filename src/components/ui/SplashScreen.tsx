@@ -42,7 +42,7 @@ export function SplashScreen({ onComplete }: { onComplete: () => void }) {
 
   return (
     <div
-      className={`fixed inset-0 z-[9999] flex items-center justify-center bg-gradient-to-br from-purple-900 via-indigo-900 to-black transition-opacity duration-500 ${
+      className={`fixed inset-0 z-[9999] flex items-center justify-center bg-gradient-to-br from-linen-900 via-honey-bronze-900 via-cotton-rose-950 to-black transition-opacity duration-500 ${
         isVisible ? 'opacity-100' : 'opacity-0'
       }`}
     >
@@ -66,7 +66,7 @@ export function SplashScreen({ onComplete }: { onComplete: () => void }) {
 
       {/* Scanning lines effect */}
       <div className="absolute inset-0 opacity-20">
-        <div className="h-full w-full animate-scan-lines bg-gradient-to-b from-transparent via-cyan-400 to-transparent" />
+        <div className="h-full w-full animate-scan-lines bg-gradient-to-b from-transparent via-honey-bronze-400 to-transparent" />
       </div>
 
       {/* Main logo container */}
@@ -77,9 +77,9 @@ export function SplashScreen({ onComplete }: { onComplete: () => void }) {
             animationPhase >= 1 ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
           }`}
         >
-          <div className="absolute -inset-16 rounded-full border-2 border-cyan-400/30 animate-spin-slow" />
-          <div className="absolute -inset-20 rounded-full border border-purple-400/20 animate-spin-slower-reverse" />
-          <div className="absolute -inset-24 rounded-full border border-pink-400/10 animate-spin-slowest" />
+          <div className="absolute -inset-16 rounded-full border-2 border-honey-bronze-400/30 animate-spin-slow" />
+          <div className="absolute -inset-20 rounded-full border border-muted-teal-500/20 animate-spin-slower-reverse" />
+          <div className="absolute -inset-24 rounded-full border border-honey-bronze-600/10 animate-spin-slowest" />
         </div>
 
         {/* Logo with glow effect */}
@@ -92,10 +92,10 @@ export function SplashScreen({ onComplete }: { onComplete: () => void }) {
         >
           {/* Pulsing glow layers */}
           <div className="absolute inset-0 -m-8">
-            <div className="w-full h-full rounded-full bg-cyan-400/20 blur-3xl animate-pulse-glow" />
+            <div className="w-full h-full rounded-full bg-honey-bronze-400/20 blur-3xl animate-pulse-glow" />
           </div>
           <div className="absolute inset-0 -m-12">
-            <div className="w-full h-full rounded-full bg-purple-500/10 blur-3xl animate-pulse-glow-delayed" />
+            <div className="w-full h-full rounded-full bg-muted-teal-500/10 blur-3xl animate-pulse-glow-delayed" />
           </div>
 
           {/* Main logo */}
@@ -106,13 +106,13 @@ export function SplashScreen({ onComplete }: { onComplete: () => void }) {
               width={320}
               height={320}
               priority
-              className="w-full h-full object-contain drop-shadow-[0_0_30px_rgba(34,211,238,0.5)]"
+              className="w-full h-full object-contain drop-shadow-[0_0_30px_rgba(241,154,14,0.5)]"
             />
           </div>
 
           {/* Holographic scan effect */}
           <div
-            className={`absolute inset-0 bg-gradient-to-b from-transparent via-cyan-400/30 to-transparent animate-scan-vertical ${
+            className={`absolute inset-0 bg-gradient-to-b from-transparent via-honey-bronze-400/30 to-transparent animate-scan-vertical ${
               animationPhase >= 2 ? 'opacity-100' : 'opacity-0'
             }`}
           />
@@ -125,13 +125,13 @@ export function SplashScreen({ onComplete }: { onComplete: () => void }) {
           }`}
         >
           <div className="flex items-center space-x-2">
-            <div className="text-cyan-400 text-xl font-orbitron tracking-wider animate-pulse-text">
+            <div className="text-honey-bronze-400 text-xl font-heading tracking-wider animate-pulse-text">
               INITIALIZING
             </div>
             <div className="flex space-x-1">
-              <span className="w-2 h-2 bg-cyan-400 rounded-full animate-dot-pulse" />
-              <span className="w-2 h-2 bg-cyan-400 rounded-full animate-dot-pulse animation-delay-200" />
-              <span className="w-2 h-2 bg-cyan-400 rounded-full animate-dot-pulse animation-delay-400" />
+              <span className="w-2 h-2 bg-honey-bronze-400 rounded-full animate-dot-pulse" />
+              <span className="w-2 h-2 bg-honey-bronze-400 rounded-full animate-dot-pulse animation-delay-200" />
+              <span className="w-2 h-2 bg-honey-bronze-400 rounded-full animate-dot-pulse animation-delay-400" />
             </div>
           </div>
         </div>
@@ -146,7 +146,7 @@ export function SplashScreen({ onComplete }: { onComplete: () => void }) {
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="0.5"
-                  className="text-cyan-400"
+                  className="text-honey-bronze-400"
                 />
               </pattern>
             </defs>
@@ -157,20 +157,20 @@ export function SplashScreen({ onComplete }: { onComplete: () => void }) {
 
       {/* Corner accent lines */}
       <div className="absolute top-8 left-8 w-16 h-16">
-        <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-cyan-400 to-transparent animate-expand-horizontal" />
-        <div className="absolute top-0 left-0 w-0.5 h-full bg-gradient-to-b from-cyan-400 to-transparent animate-expand-vertical" />
+        <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-honey-bronze-400 to-transparent animate-expand-horizontal" />
+        <div className="absolute top-0 left-0 w-0.5 h-full bg-gradient-to-b from-honey-bronze-400 to-transparent animate-expand-vertical" />
       </div>
       <div className="absolute top-8 right-8 w-16 h-16">
-        <div className="absolute top-0 right-0 w-full h-0.5 bg-gradient-to-l from-cyan-400 to-transparent animate-expand-horizontal" />
-        <div className="absolute top-0 right-0 w-0.5 h-full bg-gradient-to-b from-cyan-400 to-transparent animate-expand-vertical" />
+        <div className="absolute top-0 right-0 w-full h-0.5 bg-gradient-to-l from-honey-bronze-400 to-transparent animate-expand-horizontal" />
+        <div className="absolute top-0 right-0 w-0.5 h-full bg-gradient-to-b from-honey-bronze-400 to-transparent animate-expand-vertical" />
       </div>
       <div className="absolute bottom-8 left-8 w-16 h-16">
-        <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-cyan-400 to-transparent animate-expand-horizontal" />
-        <div className="absolute bottom-0 left-0 w-0.5 h-full bg-gradient-to-t from-cyan-400 to-transparent animate-expand-vertical" />
+        <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-honey-bronze-400 to-transparent animate-expand-horizontal" />
+        <div className="absolute bottom-0 left-0 w-0.5 h-full bg-gradient-to-t from-honey-bronze-400 to-transparent animate-expand-vertical" />
       </div>
       <div className="absolute bottom-8 right-8 w-16 h-16">
-        <div className="absolute bottom-0 right-0 w-full h-0.5 bg-gradient-to-l from-cyan-400 to-transparent animate-expand-horizontal" />
-        <div className="absolute bottom-0 right-0 w-0.5 h-full bg-gradient-to-t from-cyan-400 to-transparent animate-expand-vertical" />
+        <div className="absolute bottom-0 right-0 w-full h-0.5 bg-gradient-to-l from-honey-bronze-400 to-transparent animate-expand-horizontal" />
+        <div className="absolute bottom-0 right-0 w-0.5 h-full bg-gradient-to-t from-honey-bronze-400 to-transparent animate-expand-vertical" />
       </div>
     </div>
   );
