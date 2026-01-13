@@ -44,7 +44,7 @@ export function ValueProposition() {
           className="font-heading text-4xl font-bold text-center mb-4"
         >
           Why Join{' '}
-          <span className="gradient-text">Phoop</span>?
+          <span className="text-[#6d3e0f] font-bold">Phoop</span>?
         </motion.h2>
 
         <motion.p

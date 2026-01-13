@@ -47,18 +47,14 @@ export function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-radial from-muted-teal-600/15 via-linen-900/10 to-background" />
-      
-      {/* Additional color layers */}
-      <div className="absolute inset-0 bg-gradient-to-br from-honey-bronze-900/5 via-light-coral-900/3 to-cotton-rose-900/5" />
-      <div className="absolute inset-0 bg-gradient-to-tl from-linen-900/5 via-transparent to-muted-teal-900/5" />
+      {/* Background solid color */}
+      <div className="absolute inset-0 bg-[#97A87A]/10" />
       
       {/* Particle Background */}
       <ParticleBackground />
       
       {/* 3D Monster Background */}
-      <div className="absolute inset-0 z-0 opacity-45 pointer-events-none">
+      <div className="absolute inset-0 z-0 opacity-56 pointer-events-none">
         <Suspense fallback={null}>
           <MonsterField count={8} />
         </Suspense>
@@ -69,7 +65,7 @@ export function Hero() {
         {backgroundElements.map((element) => (
           <motion.div
             key={element.id}
-            className="absolute w-64 h-64 bg-honey-bronze-500/5 rounded-full blur-3xl"
+            className="absolute w-64 h-64 bg-honey-bronze-500/7 rounded-full blur-3xl"
             initial={enableAnimations ? {
               x: element.x,
               y: element.y,
@@ -95,7 +91,7 @@ export function Hero() {
           transition={enableAnimations ? { duration: 0.8 } : undefined}
           className="font-heading text-5xl sm:text-6xl lg:text-7xl font-bold mb-6"
         >
-          <span className="text-[#a26225] font-extrabold">Phoop</span>
+          <span className="text-[#6d3e0f] font-extrabold">Phoop</span>
           <br />
           Your Digestive Health Tracker
           <br />

@@ -70,12 +70,12 @@ export function WaitlistForm() {
               🎉
             </motion.div>
             <h2 className="font-heading text-3xl font-bold mb-4">
-              Welcome to the <span className="gradient-text">Phoop Family!</span>
+              Welcome to the <span className="text-[#6d3e0f] font-bold">Phoop Family!</span>
             </h2>
             <p className="text-white/70 mb-8 text-lg">
               You're officially part of something special!
             </p>
-            <div className="bg-gradient-to-br from-honey-bronze-500/10 via-muted-teal-600/10 to-cotton-rose-500/10 rounded-xl p-8 mb-8 border border-honey-bronze-500/20">
+            <div className="bg-[#a8bba3]/10 rounded-xl p-8 mb-8 border border-[#a56a31]/20">
               <div className="text-6xl mb-4">💩✨</div>
               <p className="text-white/80 text-base leading-relaxed mb-4">
                 Get ready to transform your health journey into an exciting adventure. 
@@ -116,7 +116,7 @@ export function WaitlistForm() {
         >
           <div className="text-center mb-8">
             <h2 className="font-heading text-3xl font-bold mb-4">
-              Join the <span className="gradient-text">Waitlist</span>
+              Join the <span className="text-[#6d3e0f] font-bold">Waitlist</span>
             </h2>
             <p className="text-white/60">
               Be among the first to experience Poop Tracker and get early access benefits.

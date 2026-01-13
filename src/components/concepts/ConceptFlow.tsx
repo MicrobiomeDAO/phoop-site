@@ -129,7 +129,7 @@ export function ConceptFlow({ steps = defaultSteps, onComplete }: ConceptFlowPro
           className="text-center mb-12"
         >
           <h2 className="font-heading text-4xl font-bold mb-4">
-            How <span className="gradient-text">Poop Tracker</span> Works
+            How <span className="text-[#6d3e0f] font-bold">Poop Tracker</span> Works
           </h2>
           <p className="font-body text-white/60 max-w-2xl mx-auto">
             Getting started is easy. Just follow these simple steps to begin your 

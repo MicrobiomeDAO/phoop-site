@@ -12,13 +12,13 @@ export function MonsterShowcase() {
     <section id="monsters" className="relative py-20 overflow-hidden">
       {/* Background 3D Monster Field */}
       <div className="absolute inset-0 z-0 opacity-20">
-        <Suspense fallback={<div className="w-full h-full bg-gradient-to-b from-muted-teal-600/10 to-transparent" />}>
+        <Suspense fallback={<div className="w-full h-full bg-[#a8bba3]/10" />}>
           <MonsterField count={15} />
         </Suspense>
       </div>
 
       {/* Gradient overlay for better text readability */}
-      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-background/90 via-background/70 to-background/90 pointer-events-none" />
+      <div className="absolute inset-0 z-[1] bg-background/80 pointer-events-none" />
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -31,7 +31,7 @@ export function MonsterShowcase() {
         >
           <h2 className="font-heading text-4xl sm:text-5xl font-bold mb-4">
             Meet the{' '}
-            <span className="gradient-text">Poop Monsters</span>
+            <span className="text-[#6d3e0f] font-bold">Poop Monsters</span>
           </h2>
           <p className="font-body text-xl text-white/70 max-w-2xl mx-auto">
             Our exclusive NFT collection features 7 unique monster types plus rare zombie variants. 
@@ -157,6 +157,6 @@ const MONSTER_TYPES = [
     emoji: '🧟',
     description: 'Ultra rare undead variant',
     rarity: 'Legendary',
-    rarityColor: 'bg-gradient-to-r from-cotton-rose-500/20 to-light-coral-500/20 text-light-coral-400',
+    rarityColor: 'bg-[#ffa239]/20 text-[#ffa239]',
   },
 ];

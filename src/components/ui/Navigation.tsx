@@ -24,7 +24,7 @@ export function Navigation() {
   const navItems = [
     { label: 'How it Works', href: '#how-it-works' },
     { label: 'Features', href: '#features' },
-    { label: 'Monsters', href: '#monsters' },
+    // { label: 'Monsters', href: '#monsters' },
     { 
       label: 'Marketplace', 
       href: '#marketplace', 
@@ -49,15 +49,14 @@ export function Navigation() {
           'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
           isScrolled 
             ? 'bg-[#f9b3bd]/95 backdrop-blur-xl border-b border-[#f9b3bd] shadow-lg shadow-[#f9b3bd]/20' 
-            : 'bg-gradient-to-b from-[#f9b3bd]/90 via-[#f9b3bd]/80 to-transparent backdrop-blur-md border-b border-white/5'
+            : 'bg-[#f9b3bd]/90 backdrop-blur-md border-b border-white/5'
         )}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <a href="/" className="flex items-center gap-2 group relative">
-              {/* Glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-honey-bronze-500/20 to-muted-teal-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              {/* Glow effect removed for cleaner aesthetic */}
               <div className="relative w-10 h-10 transition-transform group-hover:scale-110 duration-300">
                 <Image
                   src="/assets/logos/poop-logo.png"
@@ -66,7 +65,7 @@ export function Navigation() {
                   className="object-contain drop-shadow-lg"
                 />
               </div>
-              <span className="font-heading font-bold text-2xl hidden sm:block text-[#a26225]">Phoop</span>
+              <span className="font-heading font-bold text-2xl hidden sm:block text-[#6d3e0f]">Phoop</span>
             </a>
 
             {/* Desktop Navigation */}
@@ -77,7 +76,7 @@ export function Navigation() {
                     <a
                       href={item.href}
                       className={cn(
-                        'font-body font-bold transition-all duration-200 relative',
+                        'font-body font-extrabold transition-all duration-200 relative',
                         'text-[#a56a31] hover:text-[#8a5628]',
                         item.comingSoon && 'cursor-help'
                       )}
@@ -85,16 +84,16 @@ export function Navigation() {
                       <span className="flex items-center gap-2">
                         {item.label}
                         {item.comingSoon && (
-                          <span className="text-[10px] px-2 py-0.5 bg-gradient-to-r from-honey-bronze-500/25 to-muted-teal-500/25 text-honey-bronze-600 border border-honey-bronze-500/30 rounded-full font-bold animate-pulse">
-                            SOON
+                          <span className="text-[10px] px-2 py-0.5 bg-[#ffa239]/20 text-[#a56a31] border-2 border-purple-500 rounded-full font-bold animate-pulse">
+                            soon
                           </span>
                         )}
                       </span>
                       {/* Hover underline */}
-                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-honey-bronze-500 to-muted-teal-600 transition-all duration-300 group-hover:w-full" />
+                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#a56a31] transition-all duration-300 group-hover:w-full" />
                     </a>
                     {item.tooltip && (
-                      <div className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-72 p-4 bg-gradient-to-br from-surface to-surface/95 border border-gold/20 rounded-xl shadow-2xl shadow-gold/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 pointer-events-none z-50 backdrop-blur-xl">
+                      <div className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-72 p-4 bg-surface/95 border border-[#a56a31]/20 rounded-xl shadow-2xl shadow-[#a56a31]/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 pointer-events-none z-50 backdrop-blur-xl">
                         <p className="text-sm text-white/90 leading-relaxed">{item.tooltip}</p>
                         <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-surface border-l border-t border-gold/20 rotate-45" />
                       </div>
@@ -104,7 +103,7 @@ export function Navigation() {
               </nav>
               
               {/* Separator */}
-              <div className="w-px h-6 bg-gradient-to-b from-transparent via-gold/30 to-transparent" />
+              <div className="w-px h-6 bg-[#a56a31]/30" />
               
               {/* Join Waitlist Button */}
               <button
@@ -114,8 +113,6 @@ export function Navigation() {
                 <span className="relative z-10 flex items-center gap-2">
                   Join Waitlist
                 </span>
-                {/* Animated shine effect */}
-                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
               </button>
               
               {/* Theme Toggle - Only shown when light mode is enabled */}
@@ -165,20 +162,20 @@ export function Navigation() {
             initial={enableAnimations ? { opacity: 0, height: 0 } : undefined}
             animate={{ opacity: 1, height: 'auto' }}
             exit={enableAnimations ? { opacity: 0, height: 0 } : undefined}
-            className="md:hidden fixed top-16 left-0 right-0 bg-gradient-to-b from-surface to-surface/95 backdrop-blur-xl border-b border-cotton-rose-500/10 shadow-2xl"
+            className="md:hidden fixed top-16 left-0 right-0 bg-surface/95 backdrop-blur-xl border-b border-[#a56a31]/10 shadow-2xl"
           >
             <div className="px-4 py-6 space-y-4 max-h-[80vh] overflow-y-auto">
               {navItems.map((item) => (
                 <div key={item.href}>
                   <a
                     href={item.href}
-                    className="block font-body font-bold text-[#a56a31] hover:text-[#8a5628] transition-colors py-2"
+                    className="block font-body font-extrabold text-[#a56a31] hover:text-[#8a5628] transition-colors py-2"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     <span className="flex items-center justify-between">
                       {item.label}
                       {item.comingSoon && (
-                        <span className="text-[10px] px-2 py-0.5 bg-gradient-to-r from-honey-bronze-500/25 to-muted-teal-500/25 text-honey-bronze-600 border border-honey-bronze-500/30 rounded-full font-bold ml-2">
+                        <span className="text-[10px] px-2 py-0.5 bg-[#ffa239]/20 text-[#a56a31] border-2 border-purple-500 rounded-full font-bold ml-2">
                           SOON
                         </span>
                       )}

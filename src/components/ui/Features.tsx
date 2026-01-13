@@ -58,7 +58,7 @@ export function Features() {
         >
           <h2 className="font-heading text-4xl font-bold mb-4">
             Everything You Need to{' '}
-            <span className="gradient-text">Track Your Health</span>
+            <span className="text-[#6d3e0f] font-bold">Track Your Health</span>
           </h2>
           <p className="font-body text-white/60 max-w-2xl mx-auto">
             Powerful features wrapped in a fun, gamified experience that makes 
@@ -69,14 +69,14 @@ export function Features() {
         {/* Features grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature, index) => {
-            // Assign colors based on index
+            // Assign colors based on index with border colors
             const colors = [
-              { bg: 'bg-honey-bronze-500/10', text: 'text-honey-bronze-400', hover: 'group-hover:text-honey-bronze-500' },
-              { bg: 'bg-muted-teal-500/10', text: 'text-muted-teal-400', hover: 'group-hover:text-muted-teal-500' },
-              { bg: 'bg-cotton-rose-500/10', text: 'text-cotton-rose-400', hover: 'group-hover:text-cotton-rose-500' },
-              { bg: 'bg-linen-500/10', text: 'text-linen-400', hover: 'group-hover:text-linen-500' },
-              { bg: 'bg-light-coral-500/10', text: 'text-light-coral-400', hover: 'group-hover:text-light-coral-500' },
-              { bg: 'bg-honey-bronze-600/10', text: 'text-honey-bronze-300', hover: 'group-hover:text-honey-bronze-400' },
+              { bg: 'bg-honey-bronze-500/20', text: 'text-honey-bronze-400', hover: 'group-hover:text-honey-bronze-500', border: 'border-honey-bronze-400' },
+              { bg: 'bg-muted-teal-500/20', text: 'text-muted-teal-400', hover: 'group-hover:text-muted-teal-500', border: 'border-muted-teal-400' },
+              { bg: 'bg-cotton-rose-500/20', text: 'text-cotton-rose-400', hover: 'group-hover:text-cotton-rose-500', border: 'border-cotton-rose-400' },
+              { bg: 'bg-linen-500/20', text: 'text-linen-400', hover: 'group-hover:text-linen-500', border: 'border-linen-400' },
+              { bg: 'bg-light-coral-500/20', text: 'text-light-coral-400', hover: 'group-hover:text-light-coral-500', border: 'border-light-coral-400' },
+              { bg: 'bg-honey-bronze-600/20', text: 'text-honey-bronze-300', hover: 'group-hover:text-honey-bronze-400', border: 'border-honey-bronze-300' },
             ];
             const colorSet = colors[index % colors.length];
             
@@ -93,7 +93,7 @@ export function Features() {
               )}
             >
               {/* Colored accent bar */}
-              <div className={`absolute top-0 left-0 right-0 h-1 ${colorSet.bg.replace('/10', '')}`} />
+              <div className={`absolute top-0 left-0 right-0 h-1 ${colorSet.bg.replace('/20', '')}`} />
               
               <div className="text-4xl mb-4">{feature.icon}</div>
               <h3 className={`font-heading text-xl font-bold mb-2 ${colorSet.hover} transition-colors`}>
@@ -102,7 +102,7 @@ export function Features() {
               <p className="font-body text-white/60 mb-4">
                 {feature.description}
               </p>
-              <div className={`inline-block px-3 py-1 ${colorSet.bg} ${colorSet.text} text-sm font-medium rounded-full`}>
+              <div className={`inline-block px-4 py-1.5 ${colorSet.bg} ${colorSet.text} text-sm font-bold rounded-full border-2 ${colorSet.border} shadow-sm`}>
                 {feature.stat}
               </div>
             </motion.div>

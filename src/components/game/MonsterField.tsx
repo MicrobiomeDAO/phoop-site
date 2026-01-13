@@ -14,12 +14,19 @@ interface MonsterFieldProps {
 export function MonsterField({ count = 10, monsterTypes }: MonsterFieldProps) {
   const monsterTypeList = monsterTypes || ['type1', 'type2', 'type3', 'type4', 'type5', 'type6', 'type7', 'zombie'];
 
-  // Generate random monster data
+  // Generate random monster data with floating properties
   const monsters = useMemo(() => {
     return Array.from({ length: count }, (_, i) => {
       const type = monsterTypeList[Math.floor(Math.random() * monsterTypeList.length)];
       const position = randomPosition(-4, 4, -2, 2, -2, 0);
-      return { id: i, type, position };
+      return { 
+        id: i, 
+        type, 
+        position,
+        // Add random float speed and range for each monster
+        floatSpeed: 2 + Math.random() * 3,
+        floatIntensity: 0.5 + Math.random() * 1.5
+      };
     });
   }, [count, monsterTypeList]);
 
