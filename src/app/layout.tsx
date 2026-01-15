@@ -21,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="font-body bg-background dark:bg-black text-white antialiased overflow-x-hidden transition-colors duration-300">
+      <body className="font-body bg-background dark:bg-black light:bg-[#facc15] text-white dark:text-[#facc15] light:text-black antialiased overflow-x-hidden transition-colors duration-300">
         <ClientLayout>
           {children}
         </ClientLayout>
