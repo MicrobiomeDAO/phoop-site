@@ -51,6 +51,20 @@
   --surface: rgba(168, 187, 163, 0.3);
 }
 
+/* Dark mode variables - black backgrounds with yellow accents */
+html.dark {
+  --foreground-rgb: 250, 204, 21;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 10, 10, 10;
+  --text-primary: 250, 204, 21;
+  --text-secondary: 234, 179, 8;
+  --sage-green: #facc15;
+  --light-sage: #fde047;
+  --cream: #fef08a;
+  --orange: #facc15;
+  --surface: rgba(250, 204, 21, 0.1);
+}
+
 /* Light mode variables - inverted for light backgrounds */
 html.light {
   --foreground-rgb: 61, 68, 49;
@@ -232,6 +246,174 @@ html.light .btn-ghost:hover {
 html.light .btn-primary {
   background: linear-gradient(to right, #f19a0e, #c17b0b);
   color: #ffffff;
+}
+
+/* ============================================
+   DARK MODE STYLES
+   ============================================ */
+
+/* Dark mode - black background with yellow accents */
+html.dark body {
+  color: rgb(250, 204, 21);
+  background: #000000;
+  background-image: 
+    radial-gradient(ellipse at top, rgba(250, 204, 21, 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom, rgba(234, 179, 8, 0.03) 0%, transparent 50%);
+}
+
+html.dark .card {
+  background: rgba(20, 20, 20, 0.8);
+  border-color: rgba(250, 204, 21, 0.3);
+  color: #facc15;
+}
+
+html.dark .surface {
+  background: rgba(20, 20, 20, 0.9);
+}
+
+html.dark .bg-surface {
+  background: rgba(20, 20, 20, 0.9);
+}
+
+html.dark .surface-light {
+  background: rgba(30, 30, 30, 0.8);
+}
+
+html.dark .glass {
+  background: rgba(20, 20, 20, 0.8);
+  backdrop-filter: blur(10px);
+  border-color: rgba(250, 204, 21, 0.2);
+}
+
+html.dark .input {
+  background: rgba(20, 20, 20, 0.9);
+  border-color: rgba(250, 204, 21, 0.3);
+  color: #facc15;
+}
+
+html.dark .input::placeholder {
+  color: rgba(250, 204, 21, 0.4);
+}
+
+/* Text colors for dark mode */
+html.dark {
+  --text-primary: #facc15;
+  --text-secondary: rgba(250, 204, 21, 0.8);
+  --text-tertiary: rgba(250, 204, 21, 0.6);
+}
+
+/* Default text to yellow in dark mode (not using !important to allow overrides) */
+html.dark {
+  color: #facc15;
+}
+
+html.dark p,
+html.dark span:not([class*="dark:text-black"]),
+html.dark div:not([class*="dark:text-black"]),
+html.dark li,
+html.dark td,
+html.dark th {
+  color: #facc15;
+}
+
+/* Headings - brighter yellow */
+html.dark h1:not([class*="dark:text-black"]),
+html.dark h2:not([class*="dark:text-black"]),
+html.dark h3:not([class*="dark:text-black"]),
+html.dark h4:not([class*="dark:text-black"]),
+html.dark h5:not([class*="dark:text-black"]),
+html.dark h6:not([class*="dark:text-black"]) {
+  color: #fde047;
+}
+
+/* Reduced opacity text */
+html.dark .opacity-70:not([class*="dark:text-black"]),
+html.dark [class*="text-white/70"]:not([class*="dark:text-black"]) {
+  color: rgba(250, 204, 21, 0.7);
+}
+
+html.dark .opacity-60:not([class*="dark:text-black"]),
+html.dark [class*="text-white/60"]:not([class*="dark:text-black"]) {
+  color: rgba(250, 204, 21, 0.6);
+}
+
+html.dark .opacity-50:not([class*="dark:text-black"]),
+html.dark [class*="text-white/50"]:not([class*="dark:text-black"]) {
+  color: rgba(250, 204, 21, 0.5);
+}
+
+html.dark .opacity-40:not([class*="dark:text-black"]),
+html.dark [class*="text-white/40"]:not([class*="dark:text-black"]) {
+  color: rgba(250, 204, 21, 0.4);
+}
+
+/* Border colors */
+html.dark .border-white\/10,
+html.dark [class*="border-white/10"] {
+  border-color: rgba(250, 204, 21, 0.1);
+}
+
+html.dark .border-white\/20,
+html.dark [class*="border-white/20"] {
+  border-color: rgba(250, 204, 21, 0.2);
+}
+
+html.dark .border-white\/5,
+html.dark [class*="border-white/5"] {
+  border-color: rgba(250, 204, 21, 0.05);
+}
+
+/* Buttons */
+html.dark .btn-ghost {
+  background: transparent;
+  border-color: rgba(250, 204, 21, 0.3);
+  color: #facc15;
+}
+
+html.dark .btn-ghost:hover {
+  border-color: #fde047;
+  background: rgba(250, 204, 21, 0.1);
+}
+
+html.dark .btn-primary {
+  background: linear-gradient(to right, #facc15, #eab308);
+  color: #000000;
+  font-weight: 700;
+}
+
+html.dark .btn-primary:hover {
+  background: linear-gradient(to right, #fde047, #facc15);
+}
+
+/* Accent colors remain vibrant in dark mode (but allow overrides) */
+html.dark [class*="text-orange"]:not([class*="dark:text-black"]),
+html.dark [class*="text-[#ffa239]"]:not([class*="dark:text-black"]) {
+  color: #facc15;
+}
+
+html.dark [class*="bg-orange"]:not([class*="dark:bg-"]),
+html.dark [class*="bg-[#ffa239]"]:not([class*="dark:bg-"]) {
+  background-color: #facc15;
+}
+
+html.dark [class*="border-orange"]:not([class*="dark:border-"]),
+html.dark [class*="border-[#ffa239]"]:not([class*="dark:border-"]) {
+  border-color: #facc15;
+}
+
+/* Gradient text in dark mode */
+html.dark .gradient-text {
+  background: linear-gradient(135deg, #fde047 0%, #facc15 50%, #eab308 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Special section backgrounds */
+html.dark [class*="bg-[#a8bba3]"],
+html.dark [class*="bg-sage"],
+html.dark [class*="bg-green"] {
+  background: rgba(20, 20, 20, 0.5) !important;
 }
 
 html.light .btn-primary:hover {
@@ -1101,4 +1283,13 @@ html.light .glow-linen {
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
   }
+}
+
+/* Logo filters for theme modes */
+.light-mode-logo {
+  filter: brightness(0);
+}
+
+.dark-mode-logo {
+  filter: brightness(0) saturate(100%) invert(89%) sepia(97%) saturate(749%) hue-rotate(1deg) brightness(104%) contrast(104%);
 }

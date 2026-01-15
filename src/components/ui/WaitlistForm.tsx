@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useAnimationFlag } from '@/config/animations';
 import { cn } from '@/lib/utils';
 import { joinWaitlist, type WaitlistStats } from '@/lib/supabase';
+import { siteConfig } from '@/config/siteConfig';
 
 export function WaitlistForm() {
   const [email, setEmail] = useState('');
@@ -106,21 +107,53 @@ export function WaitlistForm() {
   }
 
   return (
-    <section id="waitlist" className="py-20 relative">
+    <section id="waitlist" className="py-20 relative bg-gradient-to-b from-[#a8bba3]/5 to-transparent">
       <div className="max-w-2xl mx-auto px-4">
         <motion.div
           initial={enableAnimations ? { opacity: 0, y: 30 } : undefined}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="card"
+          className="card border-2 border-[#ffa239]/30 shadow-2xl shadow-[#ffa239]/20"
         >
           <div className="text-center mb-8">
-            <h2 className="font-heading text-3xl font-bold mb-4">
-              Join the <span className="text-[#6d3e0f] font-bold">Waitlist</span>
+            {/* Urgency indicators */}
+            {siteConfig.features.showSpotsLeft && (
+              <div className="flex items-center justify-center gap-3 mb-4 flex-wrap">
+                <div className="px-4 py-2 bg-[#ffa239]/20 border-2 border-[#ffa239] rounded-full animate-pulse">
+                  <span className="text-[#ffa239] font-extrabold text-sm">🔥 {siteConfig.content.spotsLeft}</span>
+                </div>
+                <div className="px-4 py-2 bg-purple-500/20 border-2 border-purple-500 rounded-full">
+                  <span className="text-purple-300 font-extrabold text-sm">⭐ 50% OFF ENDS SOON</span>
+                </div>
+              </div>
+            )}
+
+            <h2 className="font-heading text-4xl font-bold mb-4">
+              <span className="text-[#6d3e0f] font-bold">Reserve Your Spot</span>
             </h2>
-            <p className="text-white/60">
-              Be among the first to experience Poop Tracker and get early access benefits.
+            <p className="text-white/80 text-lg mb-4">
+              Join 10,000+ early adopters getting exclusive beta access
             </p>
+
+            {/* Benefits list */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+              <div className="text-center p-3 bg-[#a8bba3]/10 rounded-lg">
+                <div className="text-2xl mb-1">🎁</div>
+                <div className="text-xs text-white/70 font-bold">3 Free Legendaries</div>
+              </div>
+              <div className="text-center p-3 bg-[#a8bba3]/10 rounded-lg">
+                <div className="text-2xl mb-1">💰</div>
+                <div className="text-xs text-white/70 font-bold">50% OFF Forever</div>
+              </div>
+              <div className="text-center p-3 bg-[#a8bba3]/10 rounded-lg">
+                <div className="text-2xl mb-1">🔒</div>
+                <div className="text-xs text-white/70 font-bold">Priority Support</div>
+              </div>
+              <div className="text-center p-3 bg-[#a8bba3]/10 rounded-lg">
+                <div className="text-2xl mb-1">⚡</div>
+                <div className="text-xs text-white/70 font-bold">Beta Access</div>
+              </div>
+            </div>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4 relative z-10">

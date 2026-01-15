@@ -9,6 +9,11 @@ import { WaitlistForm } from '@/components/ui/WaitlistForm';
 import { Footer } from '@/components/ui/Footer';
 import { Navigation } from '@/components/ui/Navigation';
 import { SplashScreen } from '@/components/ui/SplashScreen';
+import { HowItWorks } from '@/components/ui/HowItWorks';
+import { Testimonials } from '@/components/ui/Testimonials';
+import { FAQ } from '@/components/ui/FAQ';
+import { UrgencyBanner } from '@/components/ui/UrgencyBanner';
+import { MobileCTA } from '@/components/ui/MobileCTA';
 
 export default function Home() {
   const [showSplash, setShowSplash] = useState(true);
@@ -35,13 +40,18 @@ export default function Home() {
 
   return (
     <main className="min-h-screen">
+      <UrgencyBanner />
       <Navigation />
       <Hero />
-      <ConceptFlow />
-      <ValueProposition />
+      <HowItWorks />
       <Features />
+      <ConceptFlow />
+      <Testimonials />
+      <ValueProposition />
+      <FAQ />
       <WaitlistForm />
       <Footer />
+      <MobileCTA />
     </main>
   );
 }

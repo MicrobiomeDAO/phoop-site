@@ -7,39 +7,27 @@ import { cn } from '@/lib/utils';
 const features = [
   {
     icon: '📸',
-    title: 'Poop Photo Tracking',
-    description: 'Take photos of your poops and get instant AI analysis of consistency, color, and health indicators.',
-    stat: 'AI-Powered',
+    title: 'AI-Powered Photo Analysis',
+    description: 'Take a photo, get instant health insights. Our AI analyzes consistency, color, and patterns to help you understand your gut health better.',
+    stat: '🧠 AI-Powered',
   },
   {
-    icon: '🍎',
-    title: 'Food Logging',
-    description: 'Track what you eat and see how your diet affects your digestive health over time.',
-    stat: '10K+ Foods',
-  },
-  {
-    icon: '📊',
-    title: 'Lifestyle Habits',
-    description: 'Log sleep, stress, exercise, and water intake to find patterns in your health.',
-    stat: 'Smart Insights',
-  },
-  {
-    icon: '⭐',
-    title: 'XP & Levels',
-    description: 'Earn XP for every log and level up your health journey with gamification.',
-    stat: 'Unlimited Levels',
+    icon: '🎮',
+    title: 'Earn XP & Level Up',
+    description: 'Every health log earns you XP. Level up to unlock exclusive monsters, premium features, and bigger rewards. Make tracking addictive!',
+    stat: '♾️ Unlimited Levels',
   },
   {
     icon: '👾',
-    title: 'Poop Monsters NFTs',
-    description: 'Each poop entry is a chance to discover rare and legendary Poop Monsters from our exclusive NFT collection!',
-    stat: 'Unlock Premium Features',
+    title: 'Collect Rare NFT Monsters',
+    description: 'Each entry is a chance to discover legendary Poop Monsters! Trade, collect all 7 types, and unlock special zombie variants.',
+    stat: '🏆 7 Unique Types',
   },
   {
-    icon: '🔐',
-    title: 'Private & Secure',
-    description: 'Your health data stays yours. End-to-end encrypted and fully private.',
-    stat: '100% Private',
+    icon: '🎁',
+    title: 'Redeem Real Rewards',
+    description: 'Use your XP to get probiotics, gut health tests, and supplements at 30-50% off. Real products, real savings, real results.',
+    stat: '🛒 30-50% Discounts',
   },
 ];
 
@@ -57,17 +45,18 @@ export function Features() {
           className="text-center mb-16"
         >
           <h2 className="font-heading text-4xl font-bold mb-4">
-            Everything You Need to{' '}
-            <span className="text-[#6d3e0f] font-bold">Track Your Health</span>
+            The Health Tracker That{' '}
+            <span className="text-[#6d3e0f] font-bold">Actually Makes You Want To Track</span>
           </h2>
-          <p className="font-body text-white/60 max-w-2xl mx-auto">
-            Powerful features wrapped in a fun, gamified experience that makes 
-            health tracking something you actually want to do.
+          <p className="font-body text-white/70 max-w-2xl mx-auto text-lg">
+            Powerful AI-driven insights wrapped in a fun, rewarding experience.
+            <br/>
+            <span className="text-[#ffa239] font-bold">✨ Track daily. Earn rewards. Feel better.</span>
           </p>
         </motion.div>
 
         {/* Features grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {features.map((feature, index) => {
             // Assign colors based on index with border colors
             const colors = [

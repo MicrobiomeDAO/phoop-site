@@ -6,6 +6,7 @@ import { useAnimationFlag } from '@/config/animations';
 import { cn } from '@/lib/utils';
 import dynamic from 'next/dynamic';
 import { ParticleBackground } from './ParticleBackground';
+import { siteConfig } from '@/config/siteConfig';
 
 // Dynamically import MonsterField to avoid SSR issues with Three.js
 const MonsterField = dynamic(
@@ -46,7 +47,7 @@ export function Hero() {
   })) : [];
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 md:pt-36">
       {/* Background solid color */}
       <div className="absolute inset-0 bg-[#97A87A]/10" />
       
@@ -93,21 +94,51 @@ export function Hero() {
         >
           <span className="text-[#6d3e0f] font-extrabold">Phoop</span>
           <br />
-          Your Digestive Health Tracker
+          Turn Healthy Habits Into
           <br />
-          with{' '}
-          <span className="text-[#ffa239] font-bold">Real World Rewards</span>
+          <span className="text-[#ffa239] font-extrabold">Rewards & Rare NFTs</span>
         </motion.h1>
+
+        {/* Social Proof Badge */}
+        {siteConfig.features.showSpotsLeft && (
+          <motion.div
+            initial={enableAnimations ? { opacity: 0, scale: 0.9 } : undefined}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={enableAnimations ? { duration: 0.6, delay: 0.1 } : undefined}
+            className="flex items-center justify-center gap-2 mb-4"
+          >
+            <div className="px-4 py-2 bg-[#ffa239]/20 border-2 border-[#ffa239] rounded-full">
+              <span className="text-[#ffa239] dark:text-black font-extrabold text-sm">🔥 {siteConfig.content.stats.waitlistCount} ON WAITLIST</span>
+            </div>
+            <div className="px-4 py-2 bg-purple-500/20 border-2 border-purple-500 rounded-full">
+              <span className="text-purple-400 font-extrabold text-sm">⭐ {siteConfig.content.spotsLeft}</span>
+            </div>
+          </motion.div>
+        )}
 
         {/* Subheading */}
         <motion.p
           initial={enableAnimations ? { opacity: 0, y: 30 } : undefined}
           animate={{ opacity: 1, y: 0 }}
           transition={enableAnimations ? { duration: 0.8, delay: 0.2 } : undefined}
-          className="font-body text-xl text-white/70 mb-8 max-w-2xl mx-auto"
+          className="font-body text-xl text-white/80 mb-2 max-w-2xl mx-auto font-semibold"
         >
-          Phoop is a digestive health tracker that makes wellness fun. Log your health data, 
-          earn XP, collect Poop Monsters NFTs and win real rewards from your tracking journey.
+          Track your gut health with AI, earn XP, collect rare Poop Monster NFTs,
+          and redeem real rewards like probiotics & health tests at 30% off.
+        </motion.p>
+        
+        {/* Trust Badge */}
+        <motion.p
+          initial={enableAnimations ? { opacity: 0 } : undefined}
+          animate={{ opacity: 1 }}
+          transition={enableAnimations ? { duration: 0.8, delay: 0.3 } : undefined}
+          className="font-body text-sm text-white/60 mb-8 flex items-center justify-center gap-3"
+        >
+          <span className="flex items-center gap-1">🔒 Bank-Level Encryption</span>
+          <span className="text-white/40">•</span>
+          <span className="flex items-center gap-1">📱 iOS & Android</span>
+          <span className="text-white/40">•</span>
+          <span className="flex items-center gap-1">🎁 Free for Beta Users</span>
         </motion.p>
 
         {/* CTA Buttons */}
@@ -115,50 +146,59 @@ export function Hero() {
           initial={enableAnimations ? { opacity: 0, y: 30 } : undefined}
           animate={{ opacity: 1, y: 0 }}
           transition={enableAnimations ? { duration: 0.8, delay: 0.4 } : undefined}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8"
         >
           <button
             onClick={scrollToWaitlist}
-            className={cn(
-              'btn-primary text-lg',
-              enableButtonHover && 'hover:scale-105'
-            )}
+            className="bg-[#ffa239] hover:bg-[#ff8c1a] text-white dark:text-black font-extrabold text-lg px-8 py-4 rounded-xl shadow-2xl shadow-[#ffa239]/50 hover:shadow-[#ffa239]/70 transition-all duration-300 hover:scale-105 relative overflow-hidden group"
           >
-            Join the Waitlist
+            <span className="relative z-10 flex items-center gap-2 dark:text-black">
+              Reserve Your Spot
+            </span>
+            <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
           </button>
           <a
             href="#how-it-works"
-            className={cn(
-              'btn-ghost text-lg',
-              enableButtonHover && 'hover:scale-105'
-            )}
+            className="bg-transparent border-2 border-white/30 hover:border-[#a56a31] text-white hover:text-[#a56a31] font-bold text-lg px-8 py-4 rounded-xl transition-all duration-300 hover:scale-105"
           >
-            Learn More →
+            See How It Works →
           </a>
         </motion.div>
+        
+        {/* Countdown Timer */}
+        <motion.p
+          initial={enableAnimations ? { opacity: 0 } : undefined}
+          animate={{ opacity: 1 }}
+          transition={enableAnimations ? { duration: 0.8, delay: 0.5 } : undefined}
+          className="text-white/70 text-sm font-semibold"
+        >
+          ⏰ Early Access Closes in: <span className="text-[#ffa239] font-bold">7 Days</span>
+        </motion.p>
 
         {/* Stats */}
-        <motion.div
-          initial={enableAnimations ? { opacity: 0, y: 30 } : undefined}
-          animate={{ opacity: 1, y: 0 }}
-          transition={enableAnimations ? { duration: 0.8, delay: 0.6 } : undefined}
-          className="mt-12 flex flex-wrap items-center justify-center gap-8"
-        >
-          <div className="text-center">
-            <div className="font-heading text-3xl font-bold text-light-coral-400">10K+</div>
-            <div className="text-white/50 text-sm">On Waitlist</div>
-          </div>
-          <div className="w-px h-12 bg-white/10" />
-          <div className="text-center">
-            <div className="font-heading text-3xl font-bold text-muted-teal-400">∞</div>
-            <div className="text-white/50 text-sm">XP Levels</div>
-          </div>
-          <div className="w-px h-12 bg-white/10" />
-          <div className="text-center">
-            <div className="font-heading text-3xl font-bold text-honey-bronze-400">7</div>
-            <div className="text-white/50 text-sm">Monster Types</div>
-          </div>
-        </motion.div>
+        {siteConfig.features.showStats && (
+          <motion.div
+            initial={enableAnimations ? { opacity: 0, y: 30 } : undefined}
+            animate={{ opacity: 1, y: 0 }}
+            transition={enableAnimations ? { duration: 0.8, delay: 0.6 } : undefined}
+            className="mt-12 flex flex-wrap items-center justify-center gap-8"
+          >
+            <div className="text-center">
+              <div className="font-heading text-3xl font-bold text-light-coral-400">{siteConfig.content.stats.waitlistCount}</div>
+              <div className="text-white/50 text-sm">On Waitlist</div>
+            </div>
+            <div className="w-px h-12 bg-white/10" />
+            <div className="text-center">
+              <div className="font-heading text-3xl font-bold text-muted-teal-400">∞</div>
+              <div className="text-white/50 text-sm">XP Levels</div>
+            </div>
+            <div className="w-px h-12 bg-white/10" />
+            <div className="text-center">
+              <div className="font-heading text-3xl font-bold text-honey-bronze-400">7</div>
+              <div className="text-white/50 text-sm">Monster Types</div>
+            </div>
+          </motion.div>
+        )}
       </div>
     </section>
   );

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { Analytics } from "@vercel/analytics/next";
+import { ClientLayout } from '@/components/ClientLayout';
 
 export const metadata: Metadata = {
   title: 'Phoop - Digestive Health Tracker with Poop Monsters NFTs',
@@ -20,8 +21,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="font-body bg-background text-white antialiased overflow-x-hidden">
-        {children}
+      <body className="font-body bg-background dark:bg-black text-white antialiased overflow-x-hidden transition-colors duration-300">
+        <ClientLayout>
+          {children}
+        </ClientLayout>
         <Analytics />
       </body>
     </html>
