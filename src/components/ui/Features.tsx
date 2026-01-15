@@ -10,7 +10,7 @@ const features = [
     icon: '📸',
     title: 'AI-Powered Photo Analysis',
     description: 'Take a photo, get instant health insights. Our AI analyzes consistency, color, and patterns to help you understand your gut health better.',
-    stat: '🧠 AI-Powered',
+    stat: 'AI-Powered',
   },
   {
     icon: '🎮',
@@ -22,11 +22,11 @@ const features = [
     icon: '👾',
     title: 'Collect Rare NFT Monsters',
     description: 'Each entry is a chance to discover legendary Poop Monsters! Trade, collect all 7 types, and unlock special zombie variants.',
-    stat: '🏆 7 Unique Types',
+    stat: 'Unique NFTs',
   },
   {
     icon: '🎁',
-    title: 'Redeem Real Rewards',
+    title: 'Redeem Real Rewards & Discounts',
     description: 'Use your XP to get probiotics, gut health tests, and supplements at 30-50% off. Real products, real savings, real results.',
     stat: '🛒 30-50% Discounts',
   },

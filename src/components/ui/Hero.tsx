@@ -230,11 +230,11 @@ export function Hero() {
           transition={enableAnimations ? { duration: 0.8, delay: 0.3 } : undefined}
           className="font-body text-sm text-white/60 mb-8 flex items-center justify-center gap-3"
         >
-          <span className="flex items-center gap-1">🔒 Bank-Level Encryption</span>
+          <span className="flex items-center gap-1">Encrypted</span>
           <span className="text-white/40">•</span>
-          <span className="flex items-center gap-1">📱 iOS & Android</span>
+          <span className="flex items-center gap-1">iOS, Android & Seeker</span>
           <span className="text-white/40">•</span>
-          <span className="flex items-center gap-1">🎁 Free for Beta Users</span>
+          <span className="flex items-center gap-1">Extra rewards for Beta Users</span>
         </motion.p>
 
         {/* CTA Buttons */}
@@ -268,7 +268,7 @@ export function Hero() {
           transition={enableAnimations ? { duration: 0.8, delay: 0.5 } : undefined}
           className="text-white/70 text-sm font-semibold"
         >
-          ⏰ Early Access Closes in: <span className="text-[#ffa239] font-bold">7 Days</span>
+          ⏰ Waitlist and Whitelisting live <span className="text-[#ffa239] font-bold"></span>
         </motion.p>
 
         {/* Stats */}

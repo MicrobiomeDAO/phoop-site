@@ -161,7 +161,7 @@ export function HowItWorks() {
             </span>
           </button>
           <p className="font-body text-white/60 text-sm mt-4">
-            Join 10,000+ users already tracking smarter
+            Join a community of most aware fitness enthusiasts
           </p>
         </motion.div>
       </div>

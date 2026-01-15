@@ -15,7 +15,7 @@ const VALUE_PROPS = [
     icon: '👾',
     title: 'Collect Poop Monsters NFTs',
     description: 'Every health entry is a chance to discover rare and legendary Poop Monsters from our exclusive NFT collection.',
-    stat: '7 unique types',
+    stat: 'Unique NFT collection',
   },
   {
     icon: '⭐',

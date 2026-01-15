@@ -47,7 +47,7 @@ export default function Home() {
       <Features />
       <ConceptFlow />
       <Testimonials />
-      <ValueProposition />
+      {/* <ValueProposition /> */}
       <FAQ />
       <WaitlistForm />
       <Footer />

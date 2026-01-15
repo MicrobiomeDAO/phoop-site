@@ -69,7 +69,7 @@ const defaultSteps: ConceptStep[] = [
     title: 'Collect Poop Monsters NFTs',
     description: 'Every health entry is a chance to discover a new Poop Monster from our exclusive NFT collection! Collect all 7 types plus rare zombies. Earn XP and level up!',
     benefits: [
-      '7 unique NFT monster types',
+      'Unique NFT monster collection',
       'Rare zombie variants',
       'XP for every log',
       'Level up rewards',
