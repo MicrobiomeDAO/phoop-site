@@ -13,12 +13,12 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>('dark');
+  const [theme, setTheme] = useState<Theme>('light');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    // Load theme from localStorage or default to dark
+    // Load theme from localStorage or default to light
     const savedTheme = localStorage.getItem('phoop-theme') as Theme | null;
     if (savedTheme) {
       setTheme(savedTheme);
@@ -30,9 +30,9 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         document.documentElement.classList.remove('dark');
       }
     } else {
-      // Set default to dark mode
-      document.documentElement.classList.add('dark');
-      document.documentElement.classList.remove('light');
+      // Set default to light mode
+      document.documentElement.classList.add('light');
+      document.documentElement.classList.remove('dark');
     }
   }, []);
 
