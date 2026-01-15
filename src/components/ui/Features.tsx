@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { useAnimationFlag } from '@/config/animations';
 import { cn } from '@/lib/utils';
+import { staggerContainer, card3D, viewportOptions } from '@/lib/scrollAnimations';
 
 const features = [
   {
@@ -56,7 +57,13 @@ export function Features() {
         </motion.div>
 
         {/* Features grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOptions}
+        >
           {features.map((feature, index) => {
             // Assign colors based on index with border colors
             const colors = [
@@ -72,10 +79,7 @@ export function Features() {
             return (
             <motion.div
               key={feature.title}
-              initial={enableAnimations ? { opacity: 0, y: 30 } : undefined}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={enableAnimations ? { delay: index * 0.1 } : undefined}
+              variants={card3D}
               className={cn(
                 'card group cursor-pointer relative overflow-hidden',
                 enableAnimations && 'hover:scale-105'
@@ -96,7 +100,7 @@ export function Features() {
               </div>
             </motion.div>
           )})}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

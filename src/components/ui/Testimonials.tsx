@@ -1,8 +1,9 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { useAnimationFlag } from '@/config/animations';
 import { siteConfig } from '@/config/siteConfig';
+import { useRef } from 'react';
 
 const testimonials = [
   {
@@ -35,14 +36,35 @@ export function Testimonials() {
   if (!siteConfig.features.showTestimonials) return null;
 
   const enableAnimations = useAnimationFlag('sectionTransitions');
+  const containerRef = useRef<HTMLElement>(null);
+  
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start end', 'end start'],
+  });
+
+  // Parallax effects for background decorations
+  const decorY1 = useTransform(scrollYProgress, [0, 1], ['0%', '-50%']);
+  const decorY2 = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
+  const decorRotate = useTransform(scrollYProgress, [0, 1], [0, 360]);
 
   return (
-    <section id="testimonials" className="py-20 bg-[#a8bba3]/5 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-10 left-10 text-8xl">💚</div>
-        <div className="absolute bottom-10 right-10 text-8xl">⭐</div>
-      </div>
+    <section ref={containerRef} id="testimonials" className="py-20 bg-[#a8bba3]/5 relative overflow-hidden">
+      {/* Background decoration with scroll effects */}
+      <motion.div className="absolute inset-0 opacity-5">
+        <motion.div 
+          className="absolute top-10 left-10 text-8xl"
+          style={{ y: decorY1, rotate: decorRotate }}
+        >
+          💚
+        </motion.div>
+        <motion.div 
+          className="absolute bottom-10 right-10 text-8xl"
+          style={{ y: decorY2, rotate: decorRotate }}
+        >
+          ⭐
+        </motion.div>
+      </motion.div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
@@ -62,15 +84,33 @@ export function Testimonials() {
 
         {/* Testimonials grid */}
         <div className="grid md:grid-cols-3 gap-8 mb-12">
-          {testimonials.map((testimonial, index) => (
-            <motion.div
-              key={index}
-              initial={enableAnimations ? { opacity: 0, y: 50 } : undefined}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={enableAnimations ? { delay: index * 0.15 } : undefined}
-              className="card hover:shadow-2xl transition-all duration-300 hover:scale-105"
-            >
+          {testimonials.map((testimonial, index) => {
+            // Individual scroll tracking for each card
+            const cardRef = useRef<HTMLDivElement>(null);
+            const { scrollYProgress: cardProgress } = useScroll({
+              target: cardRef,
+              offset: ['start end', 'center center'],
+            });
+
+            const cardY = useTransform(cardProgress, [0, 1], [100, -50]);
+            const cardRotate = useTransform(cardProgress, [0, 0.5, 1], [-2, 0, 2]);
+            const cardScale = useTransform(cardProgress, [0, 0.5, 1], [0.95, 1, 0.95]);
+
+            return (
+              <motion.div
+                key={index}
+                ref={cardRef}
+                initial={enableAnimations ? { opacity: 0, y: 50 } : undefined}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={enableAnimations ? { delay: index * 0.15 } : undefined}
+                style={{ 
+                  y: enableAnimations ? cardY : undefined,
+                  rotate: enableAnimations ? cardRotate : undefined,
+                  scale: enableAnimations ? cardScale : undefined,
+                }}
+                className="card hover:shadow-2xl transition-all duration-300 hover:scale-105"
+              >
               {/* Quote */}
               <div className="mb-6">
                 <div className="text-[#ffa239] text-4xl mb-3">"</div>
@@ -101,8 +141,9 @@ export function Testimonials() {
                   <div className="text-sm text-white/60">{testimonial.location}</div>
                 </div>
               </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </div>
 
         {/* Trust indicators */}

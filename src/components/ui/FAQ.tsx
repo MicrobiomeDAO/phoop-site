@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useRef } from 'react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { useAnimationFlag } from '@/config/animations';
 import { siteConfig } from '@/config/siteConfig';
 
@@ -37,15 +37,37 @@ export function FAQ() {
 
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const enableAnimations = useAnimationFlag('sectionTransitions');
+  const containerRef = useRef<HTMLElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start end', 'end start'],
+  });
+
+  // Title parallax effect
+  const titleY = useTransform(scrollYProgress, [0, 1], ['0%', '-20%']);
+  const titleScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.95, 1, 0.95]);
 
   return (
-    <section id="faq" className="py-20 bg-[#a8bba3]/10 relative">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section ref={containerRef} id="faq" className="py-20 bg-[#a8bba3]/10 relative overflow-hidden">
+      {/* Background decoration with scroll effect */}
+      <motion.div 
+        className="absolute inset-0 opacity-5 pointer-events-none"
+        style={{ 
+          y: useTransform(scrollYProgress, [0, 1], ['0%', '30%']) 
+        }}
+      >
+        <div className="absolute top-20 left-10 text-9xl">💭</div>
+        <div className="absolute bottom-20 right-10 text-9xl">❓</div>
+      </motion.div>
+
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <motion.div
           initial={enableAnimations ? { opacity: 0, y: 30 } : undefined}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          style={{ y: titleY, scale: titleScale }}
           className="text-center mb-12"
         >
           <h2 className="font-heading text-4xl font-bold mb-4">
@@ -58,14 +80,33 @@ export function FAQ() {
 
         {/* FAQ Items */}
         <div className="space-y-4">
-          {faqs.map((faq, index) => (
-            <motion.div
-              key={index}
-              initial={enableAnimations ? { opacity: 0, y: 20 } : undefined}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={enableAnimations ? { delay: index * 0.1 } : undefined}
-              className="card cursor-pointer hover:shadow-xl transition-all duration-300"
+          {faqs.map((faq, index) => {
+            const itemRef = useRef<HTMLDivElement>(null);
+            const { scrollYProgress: itemProgress } = useScroll({
+              target: itemRef,
+              offset: ['start end', 'center center'],
+            });
+
+            const itemX = useTransform(
+              itemProgress, 
+              [0, 1], 
+              [index % 2 === 0 ? -50 : 50, 0]
+            );
+            const itemRotate = useTransform(itemProgress, [0, 1], [index % 2 === 0 ? -3 : 3, 0]);
+
+            return (
+              <motion.div
+                key={index}
+                ref={itemRef}
+                initial={enableAnimations ? { opacity: 0, y: 20 } : undefined}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={enableAnimations ? { delay: index * 0.1 } : undefined}
+                style={{ 
+                  x: enableAnimations ? itemX : undefined,
+                  rotate: enableAnimations ? itemRotate : undefined,
+                }}
+                className="card cursor-pointer hover:shadow-xl transition-all duration-300"
               onClick={() => setOpenIndex(openIndex === index ? null : index)}
             >
               <div className="flex items-center justify-between">
@@ -96,8 +137,9 @@ export function FAQ() {
                   </motion.div>
                 )}
               </AnimatePresence>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </div>
 
         {/* Still have questions CTA */}
